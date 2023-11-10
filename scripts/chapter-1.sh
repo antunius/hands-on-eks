@@ -22,7 +22,7 @@ echo "--- eksctl done"
 echo "--- Creating cluster eks"
 
 # Create the Kubernetes Cluster
-    eksctl create cluster -f ./Infra/eksctl/01-initial-cluster/cluster.yaml
+    eksctl create cluster -f Infra/eksctl/01-initial-cluster/cluster.yaml
 
 echo "*************************************************************"
 echo "********* READY TO CHAPTER 2! - FINISHED AT $(date) *********"

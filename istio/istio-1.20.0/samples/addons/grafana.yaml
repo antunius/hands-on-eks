@@ -91,7 +91,7 @@ metadata:
     app.kubernetes.io/version: "9.5.5"
     app.kubernetes.io/managed-by: Helm
 spec:
-  type: ClusterIP
+  type: NodePort
   ports:
     - name: service
       port: 3000

@@ -5,10 +5,12 @@ metadata:
   namespace: restaurant
   annotations:
     kubernetes.io/ingress.class: alb
-    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}]'
-    alb.ingress.kubernetes.io/group.name: my-restaurant
+    alb.ingress.kubernetes.io/ssl-redirect: '443'
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}, {"HTTPS": 443}]'
+    alb.ingress.kubernetes.io/healthcheck-path: '/actuator/health/readiness'
+    #alb.ingress.kubernetes.io/group.name: my-restaurant
     alb.ingress.kubernetes.io/scheme: internet-facing
-    external-dns.alpha.kubernetes.io/hostname: 976228619682.realhandsonlabs.net
+    external-dns.alpha.kubernetes.io/hostname: 226796600291.realhandsonlabs.net
 
 spec:
   rules:
@@ -21,7 +23,7 @@ spec:
                 name: restaurant
                 port:
                   number: 80
-      host: restaurant.500494385031.realhandsonlabs.net
+      host: restaurant.226796600291.realhandsonlabs.net
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
@@ -30,10 +32,12 @@ metadata:
   namespace: order
   annotations:
     kubernetes.io/ingress.class: alb
-    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}]'
-    alb.ingress.kubernetes.io/group.name: my-restaurant
+    alb.ingress.kubernetes.io/ssl-redirect: '443'
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}, {"HTTPS": 443}]'
+    alb.ingress.kubernetes.io/healthcheck-path: '/actuator/health/readiness'
+    #alb.ingress.kubernetes.io/group.name: my-restaurant
     alb.ingress.kubernetes.io/scheme: internet-facing
-    external-dns.alpha.kubernetes.io/hostname: 976228619682.realhandsonlabs.net
+    external-dns.alpha.kubernetes.io/hostname: 226796600291.realhandsonlabs.net
 
 spec:
   rules:
@@ -46,7 +50,7 @@ spec:
                 name: order
                 port:
                   number: 80
-      host: order.500494385031.realhandsonlabs.net
+      host: order.226796600291.realhandsonlabs.net
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
@@ -55,10 +59,13 @@ metadata:
   namespace: nginx
   annotations:
     kubernetes.io/ingress.class: alb
-    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}]'
-    alb.ingress.kubernetes.io/group.name: my-restaurant
+    alb.ingress.kubernetes.io/ssl-redirect: '443'
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}, {"HTTPS": 443}]'
+    alb.ingress.kubernetes.io/healthcheck-path: '/'
+    #alb.ingress.kubernetes.io/group.name: my-restaurant
     alb.ingress.kubernetes.io/scheme: internet-facing
-    external-dns.alpha.kubernetes.io/hostname: 500494385031.realhandsonlabs.net
+    external-dns.alpha.kubernetes.io/hostname: 226796600291.realhandsonlabs.net
+
 
 spec:
   rules:
@@ -71,5 +78,5 @@ spec:
                 name: nginx
                 port:
                   number: 80
-      host: nginx.500494385031.realhandsonlabs.net
+      host: nginx.226796600291.realhandsonlabs.net
 ---
